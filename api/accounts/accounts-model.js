@@ -1,22 +1,22 @@
 const db = require('../../data/db-config')
 
 const getAll = () => {
-  return db('posts')
+  return db('accounts')
 }
 
 const getById = async (id) => {
-  return db('posts').where({ id }).first()
+  return db('accounts').where('id', id).first()
 }
 
 const create = async (account) => {
-  const [id] = await db('posts').insert(account)
+  const [id] = await db('accounts').insert(account)
 
   return getById(id)
 }
 
 const updateById = async (id, account) => {
   
-  await db('posts').where({ id }).update(account)
+  await db('accounts').where({ id }).update(account)
 
   return getById(id)
   
@@ -26,7 +26,7 @@ const deleteById = async (id) => {
 
   const toBeDeleted = await getById(id)
   
-  await db('posts').where('id', id).delete()
+  await db('accounts').where('id', id).delete()
   
   return toBeDeleted;
 }

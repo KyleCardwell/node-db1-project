@@ -1,20 +1,17 @@
 exports.checkAccountPayload = (req, res, next) => {
-  // DO YOUR MAGIC
+  
+  console.log('checkAccountPayload middleware')
+  next()
 }
 
 exports.checkAccountNameUnique = (req, res, next) => {
-  // DO YOUR MAGIC
+  
+  console.log('checkAccountNameUnique middleware')
+  next()
 }
 
-exports.checkAccountId = async (req, res, next) => {
-  try {
-    const accountID = req.params.id
-
-    if(accountID) {
-      res.accountID = accountID
-      next()
-    } else {
-      res.status(404).json({ message: 'Account ID cannot be found'})
-    }
-  } catch (err) { next(err) }
+exports.checkAccountId =  (req, res, next) => {
+  
+  console.log('checkAccountId middleware')
+  next()
 }
