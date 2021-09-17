@@ -4,12 +4,13 @@ const getAll = () => {
   return db('accounts')
 }
 
-const getById = async (id) => {
+const getById = (id) => {
   return db('accounts').where('id', id).first()
 }
 
-const create = async (account) => {
-  const [id] = await db('accounts').insert(account)
+const create = async account => {
+  
+  const [id] = await db('accounts').insert({...account, name: account.name.trim()})
 
   return getById(id)
 }
